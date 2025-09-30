@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>វគ្គសិក្សាថ្មី: ចំណាយពេលខ្លី ចេះនិយាយលឿន</title>
+<!-- Add AOS CSS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- Add Koulen Khmer font -->
+<link href="https://fonts.googleapis.com/css2?family=Koulen&family=Kantumruy:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Kantumruy:wght@300;400;600;700&display=swap');
+
+  :root {
+    --primary: #ffd54f;
+    --primary-dark: #ffc107;
+    --secondary: #764ba2;
+    --secondary-light: #8561c5;
+    --accent: #ff4081;
+    --dark: #1a1a2e;
+    --light: #f8f9fa;
+    --blue: #4a6fff;
+    --purple: #9c4dff;
+    --pink: #ff4da6;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Kantumruy', sans-serif;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+    color: var(--light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Animated background elements */
+  .bg-orbs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    overflow: hidden;
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.3;
+    animation: float 15s infinite ease-in-out;
+  }
+
+  .orb-1 {
+    width: 400px;
+    height: 400px;
+    background: var(--blue);
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+  }
+
+  .orb-2 {
+    width: 300px;
+    height: 300px;
+    background: var(--purple);
+    top: 60%;
+    right: 10%;
+    animation-delay: 5s;
+  }
+
+  .orb-3 {
+    width: 350px;
+    height: 350px;
+    background: var(--pink);
+    bottom: 10%;
+    left: 20%;
+    animation-delay: 10s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
+  }
+
+  .particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: particle-float 20s infinite linear;
+  }
+
+  @keyframes particle-float {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+  }
+
+  .container {
+    background: rgba(26, 26, 46, 0.7);
+    max-width: 650px;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
+    background-size: 200% 100%;
+    animation: gradient-line 3s linear infinite;
+    z-index: 2;
+  }
+
+  @keyframes gradient-line {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 0%; }
+  }
+
+  h1, h2, h3 {
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    text-shadow: 0 2px 10px rgba(255, 213, 79, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  h1:hover, h2:hover, h3:hover {
+    text-shadow: 0 2px 15px rgba(255, 213, 79, 0.5);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-align: center;
+    padding-bottom: 15px;
+    font-family: 'Koulen', cursive;
+    letter-spacing: 1px;
+  }
+
+  h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--purple), var(--pink));
+    border-radius: 2px;
+    animation: underline-expand 1.5s ease forwards;
+    animation-delay: 0.5s;
+  }
+
+  @keyframes underline-expand {
+    0% { width: 0; }
+    100% { width: 100%; }
+  }
+
+  h2 {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  h3 {
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+  .teacher-info {
+    background: rgba(133, 97, 197, 0.3);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 25px 0;
+    text-align: center;
+    font-size: 1.1rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .teacher-info::before {
+    content: '👨‍🏫';
+    margin-right: 10px;
+    font-size: 1.3rem;
+  }
+
+  .teacher-info:hover {
+    background: rgba(133, 97, 197, 0.5);
+    box-shadow: 0 5px 20px rgba(133, 97, 197, 0.4);
+    transform: translateY(-3px);
+  }
+
+  .teacher-info:hover::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: ripple 0.6s ease-out;
+  }
+
+  @keyframes ripple {
+    0% { width: 0; height: 0; opacity: 0.5; }
+    100% { width: 300px; height: 300px; opacity: 0; }
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 30px 0;
+  }
+
+  ul li {
+    background: rgba(133, 97, 197, 0.3);
+    margin: 15px 0;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-left: 5px solid var(--primary);
+    display: flex;
+    align-items: center;
+  }
+
+  ul li::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffd54f"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>') no-repeat center;
+    margin-right: 15px;
+    flex-shrink: 0;
+    animation: checkmark-pulse 2s infinite;
+  }
+
+  @keyframes checkmark-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  ul li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s ease;
+  }
+
+  ul li:hover {
+    transform: translateX(8px);
+    background: rgba(133, 97, 197, 0.5);
+    box-shadow: 0 5px 15px rgba(133, 97, 197, 0.4);
+  }
+
+  ul li:hover::after {
+    left: 100%;
+  }
+
+  .price-container {
+    position: relative;
+    margin: 30px 0;
+  }
+
+  .price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(118, 75, 162, 0.3), rgba(255, 64, 129, 0.2));
+    border-radius: 15px;
+    border: 1px dashed var(--primary);
+    position: relative;
+    overflow: hidden;
+    animation: price-pulse 3s infinite;
+  }
+
+  @keyframes price-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+
+  .price::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(118, 75, 162, 0.1), rgba(255, 64, 129, 0.1));
+    z-index: -1;
+    animation: gradient-shift 5s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+  }
+
+  .discount-badge {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background: var(--accent);
+    color: white;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    transform: rotate(15deg);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 3;
+    animation: badge-pulse 2s infinite;
+  }
+
+  .discount-badge::before {
+    content: '✨';
+    margin-right: 5px;
+  }
+
+  @keyframes badge-pulse {
+    0%, 100% { transform: rotate(15deg) scale(1); }
+    50% { transform: rotate(15deg) scale(1.05); }
+  }
+
+  .countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .timer-unit {
+    background: rgba(26, 26, 46, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    min-width: 60px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+  }
+
+  .timer-unit:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+  }
+
+  .timer-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    display: block;
+  }
+
+  .timer-label {
+    font-size: 0.8rem;
+    color: #ccc;
+    display: block;
+    margin-top: 5px;
+  }
+
+  .student-counter {
+    background: rgba(255, 64, 129, 0.2);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 25px 0;
+    text-align: center;
+    border: 1px solid var(--accent);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .counter-text {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+
+  .counter-numbers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 15px;
+  }
+
+  .counter-current {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    min-width: 50px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .counter-current:hover {
+    transform: scale(1.1);
+  }
+
+  .counter-total {
+    font-size: 1.3rem;
+    color: #ccc;
+  }
+
+  .counter-bar {
+    height: 8px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .counter-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue), var(--purple));
+    width: 80%;
+    border-radius: 10px;
+    animation: progress-grow 6s ease-out forwards;
+  }
+
+  @keyframes progress-grow {
+    from { width: 80%; }
+    to { width: 92%; }
+  }
+
+  .schedule {
+    background: rgba(81, 45, 168, 0.3);
+    padding: 25px;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-top: 30px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+    overflow: hidden;
+  }
+
+  .schedule:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(81, 45, 168, 0.3);
+  }
+
+  .schedule h2 {
+    margin-top: 0;
+  }
+
+  .schedule-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .schedule-item {
+    background: rgba(118, 75, 162, 0.3);
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    border-left: 3px solid var(--primary);
+    display: flex;
+    align-items: center;
+  }
+
+  .schedule-item::before {
+    content: '⏱️';
+    margin-right: 10px;
+    font-size: 1.2rem;
+  }
+
+  .schedule-item:hover {
+    transform: translateX(10px);
+    background: rgba(118, 75, 162, 0.5);
+    box-shadow: 0 5px 15px rgba(118, 75, 162, 0.3);
+    border-left: 3px solid var(--accent);
+  }
+
+  .audio-sample {
+    background: rgba(118, 75, 162, 0.2);
+    padding: 25px;
+    border-radius: 15px;
+    margin: 25px 0;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .audio-sample:hover {
+    transform: scale(1.01);
+    box-shadow: 0 5px 15px rgba(118, 75, 162, 0.3);
+  }
+
+  .audio-sample p {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: var(--primary);
+  }
+
+  .custom-audio-player {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .play-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--purple));
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(74, 111, 255, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .play-btn::before {
+    content: '🎧';
+  }
+
+  .play-btn:hover {
+    transform: rotate(10deg);
+    box-shadow: 0 8px 20px rgba(74, 111, 255, 0.6);
+  }
+
+  .play-btn.playing::before {
+    content: '⏸️';
+  }
+
+  .play-btn:hover::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: ripple 0.6s ease-out;
+  }
+
+  .progress-container {
+    flex: 1;
+    height: 8px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue), var(--purple));
+    width: 0%;
+    border-radius: 10px;
+    transition: width 0.1s linear;
+  }
+
+  .time-display {
+    font-size: 0.9rem;
+    color: #ccc;
+    min-width: 100px;
+    text-align: center;
+  }
+
+  .faq-section {
+    margin: 30px 0;
+  }
+
+  .faq-item {
+    background: rgba(133, 97, 197, 0.2);
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .faq-question {
+    padding: 18px 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+
+  .faq-question::before {
+    content: '❓';
+    margin-right: 10px;
+  }
+
+  .faq-question:hover {
+    background: rgba(133, 97, 197, 0.3);
+  }
+
+  .faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease;
+    background: rgba(26, 26, 46, 0.5);
+  }
+
+  .faq-answer p {
+    margin: 0;
+    padding: 20px 0;
+  }
+
+  .faq-item.active .faq-answer {
+    max-height: 500px;
+  }
+
+  .faq-item.active .faq-question .faq-arrow {
+    transform: rotate(180deg);
+  }
+
+  .faq-arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .cta-btn {
+    display: block;
+    width: 100%;
+    padding: 20px 0;
+    margin-top: 40px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(135deg, var(--blue), var(--purple));
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(74, 111, 255, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .cta-btn::before {
+    content: '📩';
+    margin-right: 10px;
+  }
+
+  .cta-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(74, 111, 255, 0.6);
+  }
+
+  .cta-btn:hover::after {
+    left: 100%;
+  }
+
+  .cta-btn:active {
+    transform: translateY(1px);
+  }
+
+  .limited-offer {
+    animation: pulse 2s infinite;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 20px;
+    color: var(--accent);
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  .zoom-info {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    text-align: center;
+    color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .zoom-info strong {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .container {
+      padding: 30px 20px;
+      max-width: 90%;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    ul li {
+      font-size: 1rem;
+      padding: 12px 15px;
+    }
+    .price {
+      font-size: 1.2rem;
+    }
+    .counter-current {
+      font-size: 1.8rem;
+    }
+    .custom-audio-player {
+      flex-direction: column;
+      gap: 10px;
+    }
+    .progress-container {
+      width: 100%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Background elements -->
+<div class="bg-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<div class="particles" id="particles-container"></div>
+
+<div class="container">
+  <h1 data-aos="fade-down" data-aos-duration="800">វគ្គសិក្សាថ្មី: ពង្រឹងសមត្ថភាពការនិយាយ</h1>
+  <h2 data-aos="fade-down" data-aos-duration="800">ថ្នាក់រៀនមានលក្ខណៈទំនើប បំពាក់ដោយបច្ចេកវិទ្យា Ai </h2>
+  <h3 data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">កម្រឹតថ្នាក់: កម្រឹតទាប ដល់ មធ្យម!</h3>
+
+  <div class="teacher-info" data-aos="fade-up" data-aos-delay="300">
+    គ្រូបង្រៀនមានបទពិសោធន៍ជាង ៥ឆ្នាំក្នុងការបង្រៀនភាសាអង់គ្លេស
+  </div>
+
+  <ul>
+    <li data-aos="fade-right" data-aos-delay="300">សិក្សាទៅលើពាក្យថ្មីៗ</li>
+    <li data-aos="fade-right" data-aos-delay="400">ពង្រឹងការលើកដាក់សម្លេង</li>
+    <li data-aos="fade-right" data-aos-delay="500">បង្កើតទំនុកចិត្តក្នុងការនិយាយ</li>
+    <li data-aos="fade-right" data-aos-delay="600">ការបញ្ចេញសម្លេងឲ្យបានត្រឹមត្រូវ</li>
+    <li data-aos="fade-right" data-aos-delay="700">វឹកហាត់ style ក្នុងការបញ្ចេញសម្លេងឲ្យស្ទាត់ជំនាញ</li>
+    <li data-aos="fade-right" data-aos-delay="800">តិចនិចក្នុងការនិយាយឲ្យមានភាពទាក់ទាញ</li>
+  </ul>
+
+  <div class="price-container" data-aos="zoom-in" data-aos-delay="900">
+    <div class="discount-badge">ការផ្តល់ជូនពិសេស</div>
+    <p class="price">
+      ✨ តម្លៃសិក្សាពេញ (20$) មកត្រឹមតែ <strong>$18/ខែ</strong><br />
+      សម្រាប់ <strong>25 នាក់ដំបូង</strong>!
+    </p>
+    
+    <div class="countdown-timer">
+      <div class="timer-unit">
+        <span class="timer-value" id="days">02</span>
+        <span class="timer-label">ថ្ងៃ</span>
+      </div>
+      <div class="timer-unit">
+        <span class="timer-value" id="hours">12</span>
+        <span class="timer-label">ម៉ោង</span>
+      </div>
+      <div class="timer-unit">
+        <span class="timer-value" id="minutes">45</span>
+        <span class="timer-label">នាទី</span>
+      </div>
+      <div class="timer-unit">
+        <span class="timer-value" id="seconds">30</span>
+        <span class="timer-label">វិនាទី</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="student-counter" data-aos="fade-up" data-aos-delay="1000">
+    <div class="counter-text">សិស្សានុសិស្សបានចុះឈ្មោះហើយ</div>
+    <div class="counter-numbers">
+      <div class="counter-current" id="student-counter">20</div>
+      <div class="counter-total">/ 25</div>
+    </div>
+    <div class="counter-bar">
+      <div class="counter-progress"></div>
+    </div>
+  </div>
+
+  <p class="limited-offer" data-aos="fade" data-aos-delay="1100">ចំនួនសិស្សត្រូវបានកំណត់ត្រឹម 25នាក់ ប៉ុណ្ណោះ!</p>
+
+  <p class="zoom-info" data-aos="fade-up" data-aos-delay="1200">🔰 សិក្សាផ្ទាល់តាមរយៈ: <strong>Zoom</strong></p>
+
+  <div class="schedule" data-aos="flip-up" data-aos-delay="1300">
+    <h2>កាលវិភាគសិក្សា</h2>
+    <div class="schedule-items">
+      <div class="schedule-item">7pm-8pm ល្ងាច</div>
+      <div class="schedule-item">9pm-10pm យប់</div>
+      <div class="schedule-item">(ច័ន្ទ រហូតដល់ សុក្រ)</div>
+    </div>
+  </div>
+
+  <section class="section" data-aos="fade-up" data-aos-delay="1400">
+    <h2>🎧 គំរូនៃការអនុវត្តន៍ការបញ្ចេញសម្លេង</h2>
+    <div class="audio-sample">
+      <p>🎵ខាងក្រោមជាគំរូការអនុវត្តន៍ការស្តាប់ក្នុងថ្នាក់រៀន៖</p>
+      <div class="custom-audio-player">
+        <button class="play-btn" id="play-btn"></button>
+        <div class="progress-container">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="time-display" id="time-display">0:00 / 0:00</div>
+      </div>
+      <audio id="audio-player" style="display: none;">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </section>
+
+  <div class="faq-section" data-aos="fade-up" data-aos-delay="1500">
+    <h2>❓ សំណួរដែលគេសួរញឹកញាប់</h2>
+    
+    <div class="faq-item">
+      <div class="faq-question">
+        តើខ្ញុំត្រូវការចំណេះដឹងមូលដ្ឋានអង់គ្លេសទេ?
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-answer">
+        <p>មិនបាច់ទេ! វគ្គសិក្សានេះចាប់ផ្ដើមពីមូលដ្ឋាន ដូច្នេះសូម្បីតែអ្នកដែលមិនធ្លាប់រៀនអង់គ្លេសក៏អាចចូលរួមបានដែរ។</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">
+        តើខ្ញុំត្រូវរៀនប៉ុន្មានម៉ោងក្នុងមួយសប្តាហ៍?
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-answer">
+        <p>អ្នកនឹងរៀនចំនួន ៥ម៉ោងក្នុងមួយសប្តាហ៍ ចាប់ពីថ្ងៃច័ន្ទដល់ថ្ងៃសុក្រ។</p>
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">
+        តើខ្ញុំអាចទូទាត់ប្រាក់តាមរបៀបណាខ្លះ?
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-answer">
+        <p>អ្នកអាចទូទាត់តាមរយៈ ABA Bank, ACLEDA Bank ឬតាមរយៈ Telegram ផ្ទាល់។</p>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://t.me/alita995" class="cta-btn" data-aos="zoom-in" data-aos-delay="1600">ចុះឈ្មោះឥលូវនេះ!</a>
+</div>
+
+<!-- Add AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  // Initialize AOS
+  AOS.init({
+    duration: 800,
+    easing: 'ease-out-quad',
+    once: true,
+    offset: 50
+  });
+
+  // Create particles
+  const particlesContainer = document.getElementById('particles-container');
+  for (let i = 0; i < 50; i++) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    
+    // Random properties
+    const size = Math.random() * 5 + 2;
+    const left = Math.random() * 100;
+    const animationDuration = Math.random() * 20 + 10;
+    const animationDelay = Math.random() * 20;
+    
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    particle.style.left = `${left}%`;
+    particle.style.animationDuration = `${animationDuration}s`;
+    particle.style.animationDelay = `${animationDelay}s`;
+    
+    particlesContainer.appendChild(particle);
+  }
+
+  // Animated student counter
+  const counter = document.getElementById('student-counter');
+  const startValue = 20;
+  const endValue = Math.random() > 0.5 ? 23 : 24; // Randomly stop at 23 or 24
+  const duration = 8000; // 8 seconds for slower counting
+  let startTime = null;
+
+  function animateCounter(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const progress = Math.min((timestamp - startTime) / duration, 1);
+    const currentValue = Math.floor(progress * (endValue - startValue) + startValue);
+    counter.textContent = currentValue;
+    
+    // Update progress bar
+    document.querySelector('.counter-progress').style.width = `${(currentValue/25)*100}%`;
+    
+    if (progress < 1) {
+      window.requestAnimationFrame(animateCounter);
+    }
+  }
+
+  // Start counter animation after 1 second delay
+  setTimeout(() => {
+    window.requestAnimationFrame(animateCounter);
+  }, 1000);
+
+  // Countdown timer
+  function updateCountdown() {
+    const daysElement = document.getElementById('days');
+    const hoursElement = document.getElementById('hours');
+    const minutesElement = document.getElementById('minutes');
+    const secondsElement = document.getElementById('seconds');
+    
+    // Set target date (2 days from now)
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + 2);
+    targetDate.setHours(23, 59, 59, 999);
+    
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+    
+    if (distance < 0) {
+      // Countdown finished
+      daysElement.textContent = '00';
+      hoursElement.textContent = '00';
+      minutesElement.textContent = '00';
+      secondsElement.textContent = '00';
+      return;
+    }
+    
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    daysElement.textContent = days.toString().padStart(2, '0');
+    hoursElement.textContent = hours.toString().padStart(2, '0');
+    minutesElement.textContent = minutes.toString().padStart(2, '0');
+    secondsElement.textContent = seconds.toString().padStart(2, '0');
+  }
+  
+  // Update countdown every second
+  setInterval(updateCountdown, 1000);
+  updateCountdown(); // Initial call
+
+  // Custom audio player
+  const audioPlayer = document.getElementById('audio-player');
+  const playBtn = document.getElementById('play-btn');
+  const progressBar = document.getElementById('progress-bar');
+  const timeDisplay = document.getElementById('time-display');
+  
+  // Set audio source
+  const originalDropboxLink = "https://www.dropbox.com/scl/fi/jx9w5ayleku4t0ziqh3mq/Yon-Daravuth-Sound-Detective-Exercise.m4a?rlkey=nfvhriehlil8717pfikdnieyp&st=9jdpxi2j&dl=0";
+  const streamableLink = originalDropboxLink.replace("dl=0", "raw=1");
+  audioPlayer.src = streamableLink;
+  
+  // Play/pause functionality
+  playBtn.addEventListener('click', function() {
+    if (audioPlayer.paused) {
+      audioPlayer.play();
+      playBtn.classList.add('playing');
+    } else {
+      audioPlayer.pause();
+      playBtn.classList.remove('playing');
+    }
+  });
+  
+  // Update progress bar
+  audioPlayer.addEventListener('timeupdate', function() {
+    const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+    progressBar.style.width = `${progress}%`;
+    
+    // Update time display
+    const currentMinutes = Math.floor(audioPlayer.currentTime / 60);
+    const currentSeconds = Math.floor(audioPlayer.currentTime % 60);
+    const durationMinutes = Math.floor(audioPlayer.duration / 60);
+    const durationSeconds = Math.floor(audioPlayer.duration % 60);
+    
+    timeDisplay.textContent = 
+      `${currentMinutes}:${currentSeconds.toString().padStart(2, '0')} / ${durationMinutes}:${durationSeconds.toString().padStart(2, '0')}`;
+  });
+  
+  // Seek functionality
+  progressBar.parentElement.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const pos = (e.clientX - rect.left) / this.offsetWidth;
+    audioPlayer.currentTime = pos * audioPlayer.duration;
+  });
+
+  // FAQ accordion
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    
+    question.addEventListener('click', () => {
+      // Close all other items
+      faqItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('active');
+        }
+      });
+      
+      // Toggle current item
+      item.classList.toggle('active');
+    });
+  });
+
+  // Continuous dropdown animation for schedule items
+  const scheduleItems = document.querySelectorAll('.schedule-item');
+  
+  function startContinuousAnimation() {
+    scheduleItems.forEach((item, index) => {
+      // Stagger the animations
+      setTimeout(() => {
+        item.style.transform = 'translateX(10px)';
+        item.style.background = 'rgba(118, 75, 162, 0.5)';
+        item.style.borderLeft = '3px solid var(--accent)';
+        
+        // After 3 seconds, reset
+        setTimeout(() => {
+          item.style.transform = '';
+          item.style.background = '';
+          item.style.borderLeft = '3px solid var(--primary)';
+          setTimeout(() => {
+            if (index === scheduleItems.length - 1) {
+              // Restart the sequence after all items have animated
+              setTimeout(startContinuousAnimation, 1000);
+            }
+          }, 100);
+        }, 3000);
+      }, index * 1000);
+    });
+  }
+
+  // Start the continuous animation sequence
+  setTimeout(startContinuousAnimation, 2000);
+</script>
+</body>
+</html>
